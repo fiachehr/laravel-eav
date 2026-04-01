@@ -2,6 +2,10 @@
 
 A complete and powerful Entity-Attribute-Value (EAV) package for Laravel.
 
+## Documentation
+
+**[Laravel EAV — Documentation](https://fiachehr.ir/docs/laravel-eav.html)** (hosted on [fiachehr.ir](https://fiachehr.ir))
+
 ## Features
 
 - ✅ Clean architecture (Domain, Application, Infrastructure, Presentation)
@@ -21,7 +25,7 @@ A complete and powerful Entity-Attribute-Value (EAV) package for Laravel.
 ## Requirements
 
 - PHP >= 8.3
-- Laravel >= 11.0
+- Laravel **10.x**, **11.x**, or **12.x** (see `composer.json` `illuminate/*` constraints)
 
 ## Installation
 

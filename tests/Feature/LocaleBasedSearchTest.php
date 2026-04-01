@@ -198,19 +198,22 @@ class LocaleBasedSearchTest extends TestCase
         $product3->setEavAttributeValue('category', 'Electronics', 'en');
         $product3->setEavAttributeValue('category', 'الکترونیک', 'fa');
 
-        // Search by multiple attributes in English
+        // Search by multiple attributes (AND) — use whereMultiple; chained whereText targets one attribute_id per row
         $ids = (new EavQueryBuilder(TestProduct::class))
-            ->whereText('title', 'Laptop')
-            ->whereText('category', 'Electronics')
+            ->whereMultiple([
+                ['attribute' => 'title', 'value' => 'Laptop'],
+                ['attribute' => 'category', 'value' => 'Electronics'],
+            ])
             ->getAttributableIds();
 
         $this->assertCount(1, $ids);
         $this->assertEquals(1, $ids->first());
 
-        // Search by multiple attributes in Persian
         $ids = (new EavQueryBuilder(TestProduct::class))
-            ->whereText('title', 'لپ تاپ')
-            ->whereText('category', 'الکترونیک')
+            ->whereMultiple([
+                ['attribute' => 'title', 'value' => 'لپ تاپ'],
+                ['attribute' => 'category', 'value' => 'الکترونیک'],
+            ])
             ->getAttributableIds();
 
         $this->assertCount(1, $ids);
